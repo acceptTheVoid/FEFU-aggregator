@@ -1,0 +1,17 @@
+[package]
+name = "fefu-aggregator"
+version = "0.1.0"
+edition = "2021"
+default-run = "fefu-aggregator"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+diesel = { version = "1.4.8", features = ["mysql"] }
+dirs = "4.0.0"
+dotenv = "0.15.0"
+rocket = { version = "0.5.0-rc.2", features = ["secrets", "json"] }
+rocket_dyn_templates = { version = "0.1.0-rc.2", features = ["tera"] }
+rvk = { git = "https://github.com/acceptTheVoid/rvk" }
+serde_json = "1.0.81"
+tokio = { version = "1.19.2", features = ["full"] }
