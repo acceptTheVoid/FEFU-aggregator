@@ -1,9 +1,9 @@
-use rocket::fs::FileServer;
+use rocket::{fs::FileServer, figment::Figment, Config};
 use rvk::APIClient;
-use vk_api::get_key;
+use keys::{get_key, get_secret_key};
 use routes::*;
 
-pub mod vk_api;
+pub mod keys;
 pub mod routes;
 
 #[macro_use]
@@ -16,10 +16,14 @@ use rocket_dyn_templates::Template;
 
 #[launch]
 fn rocket() -> _ {
-    let key = get_key();
-    let api = APIClient::new(key);
+    let vk_key = get_key();
+    let secret_key = get_secret_key();
+    let api = APIClient::new(vk_key);
 
-    rocket::build()
+    let figment = Figment::from(Config::default())
+        .merge(("secret_key", secret_key));
+
+    rocket::custom(figment)
         .manage(api)
         .attach(Template::fairing())
         .mount("/static", FileServer::from("static/"))
