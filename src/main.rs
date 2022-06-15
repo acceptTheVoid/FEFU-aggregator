@@ -1,16 +1,10 @@
 use rocket::{fs::FileServer, figment::Figment, Config};
 use rvk::APIClient;
-use keys::{get_key, get_secret_key};
-use routes::*;
-
-pub mod keys;
-pub mod routes;
+use fefu_aggregator::keys::{get_key, get_secret_key};
+use fefu_aggregator::routes::*;
 
 #[macro_use]
 extern crate rocket;
-
-#[macro_use]
-extern crate rocket_dyn_templates;
 
 use rocket_dyn_templates::Template;
 

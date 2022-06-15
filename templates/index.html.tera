@@ -1,1 +1,7 @@
-{% extends "base" %} {% block title %} Feforum {% endblock title %}
+{% extends "base" %} {% block head %}
+<link rel="stylesheet" href="/static/styles.css"> {% endblock head %} {% block title %} Feforum {% endblock title %} {% block content %}
+<h1 class="header">Фефорум</h1>
+<h3 class="header">Форум для студентов ДВФУ</h3>
+<div class="container">
+</div>
+{% endblock content %}
