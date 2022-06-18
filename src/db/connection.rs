@@ -3,7 +3,7 @@ use diesel::{prelude::*, dsl::sql};
 use rvk::objects::Integer;
 use std::env;
 
-use crate::db::CachedPost;
+// use crate::db::CachedPost;
 
 pub struct DBConn {
     pub conn: Mutex<MysqlConnection>,
@@ -23,9 +23,9 @@ impl DBConn {
     }
 
     pub async fn check(&self, last_id: Integer) -> Option<Integer> {
-        use crate::schema::post::dsl::*;
+        use crate::schema::posts::dsl::*;
         let conn = &*self.conn.lock().await;
-        let max_id = post.select(sql("MAX(id)")).first(conn);
+        let max_id = posts.select(sql("MAX(id)")).first(conn);
 
         max_id.ok().map(|db_id: Integer| (db_id - last_id).abs())
     }

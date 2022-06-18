@@ -40,7 +40,7 @@ pub async fn check(
 ) -> Json<CheckResponse> {
     use CheckResponse::*;
 
-    let id = match tags.get(id) {
+    match tags.get(id) {
         Some(n) => *n,
         None => return Json(WrongAddress),
     };

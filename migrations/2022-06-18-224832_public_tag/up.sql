@@ -1,0 +1,4 @@
+ALTER TABLE posts
+ADD group_id BIGINT NOT NULL;
+ALTER TABLE posts
+ADD FOREIGN KEY(group_id) REFERENCES public(id);
