@@ -1,7 +1,6 @@
-{% extends "base" %} {% block head %}
-<link rel="stylesheet" href="/static/styles.css"> {% endblock head %} {% block title %} Feforum {% endblock title %} {% block content %}
-<h1 class="header">Фефорум</h1>
-<h3 class="header">Форум для студентов ДВФУ</h3>
-<div class="container">
+{% extends "base" %} {% block head %} {% endblock head %} {% block title %} Feforum {% endblock title %} {% block content %}
+<div class="content">
+    <img src="/" alt="Лого фефу">
+    <p>Этот сайт был создан для студентов, сотрудников и абитуриентов нашего лучшего вуза</p>
 </div>
 {% endblock content %}

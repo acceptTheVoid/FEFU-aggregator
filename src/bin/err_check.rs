@@ -1,7 +1,7 @@
 #![allow(dead_code)]
 
 use std::{fs::File, io::{self, BufRead, BufReader, Write}, thread::sleep, time::Duration};
-use fefu_aggregator::keys::get_key;
+use fefu_aggregator::init::get_key;
 use rocket::serde::Deserialize;
 use rvk::{APIClient, Params, methods::wall, objects::post::Post};
 

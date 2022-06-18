@@ -1,0 +1,16 @@
+{% extends "base" %} {% block title %} Feforum {% endblock title %} {% block content %}
+<div class="content">
+
+</div>
+
+<template id="post_template">
+    <article class="post">
+        <h2></h2>
+        <p></p>
+        <footer>
+            <button type="button">like</button>
+            <button type="button">repost</button>
+        </footer>
+    </article>
+</template>
+<script src="/static/scripts/main.js"></script>{% endblock content %}

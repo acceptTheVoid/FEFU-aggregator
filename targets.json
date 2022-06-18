@@ -1,0 +1,21 @@
+{
+    "news": [{
+        "name": "Оф паблик",
+        "href": "https://vk.com/dvfuru",
+        "id": -28511920,
+        "tag": "dvfu_official"
+    }],
+    "activities": [{
+        "name": "Клуб го",
+        "href": "https://vk.com/dvfugo",
+        "id": -190125913,
+        "tag": "dvfu_go_club"
+    }],
+    "services": [],
+    "memes": [{
+        "name": "Подслушано ДВФУ",
+        "href": "https://vk.com/overhearfefu",
+        "id": -71711391,
+        "tag": "overhear_dvfu"
+    }]
+}
