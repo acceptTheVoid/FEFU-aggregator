@@ -1,4 +1,0 @@
-CREATE TABLE posts(
-    id BIGINT PRIMARY KEY NOT NULL,
-    text TEXT NOT NULL
-)

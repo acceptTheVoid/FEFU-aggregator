@@ -1,7 +1,7 @@
 use rocket::serde::Deserialize;
 use rvk::objects::Integer;
 use std::collections::HashMap;
-use crate::schema::posts;
+use crate::schema::*;
 
 #[derive(Debug, Deserialize, Serialize, Clone)]
 #[serde(crate = "rocket::serde")]
@@ -12,23 +12,30 @@ pub struct Group {
     pub tag: String,
 }
 
-#[derive(Debug, Deserialize, Serialize, Clone, Queryable, Insertable)]
+#[derive(Debug, Deserialize, Serialize, Clone, Queryable)]
 #[serde(crate = "rocket::serde")]
-#[table_name = "posts"]
 pub struct CachedPost {
     pub id: Integer,
     pub text: String,
+    pub group_id: Integer,
 }
 
 pub type Tags = HashMap<String, Integer>;
 pub type Config = HashMap<String, Vec<Group>>;
 
-#[derive(Debug, Serialize, Clone, Copy)]
+#[derive(Debug, FromForm, Deserialize, Insertable, Queryable, Clone)]
 #[serde(crate = "rocket::serde")]
-#[serde(tag = "status", content = "amount")]
-pub enum CheckResponse {
-    Complete,
-    Missing(Integer),
-    Empty,
-    WrongAddress,
+#[table_name = "users"]
+pub struct NewUser {
+    pub username: String,
+    pub password: String,
+}
+
+#[derive(Debug, FromForm, Deserialize, Insertable, Queryable, Clone)]
+#[serde(crate = "rocket::serde")]
+#[table_name = "users"]
+pub struct User {
+    pub id: i32,
+    pub username: String,
+    pub password: String,
 }

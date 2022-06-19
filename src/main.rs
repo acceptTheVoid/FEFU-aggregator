@@ -14,7 +14,6 @@ fn rocket() -> _ {
     let vk_key = get_key();
     let secret_key = get_secret_key();
     let (config, tags) = get_groups();
-    // println!("{:#?}", config);
     let api = APIClient::new(vk_key);
     let db = DBConn::new();
 
@@ -28,5 +27,5 @@ fn rocket() -> _ {
         .manage(db)
         .attach(Template::fairing())
         .mount("/static", FileServer::from("static/"))
-        .mount("/", routes![index, news, get_posts, group, check])
+        .mount("/", routes![index, news, get_posts, group, login, register, register_post, login_post])
 }

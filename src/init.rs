@@ -31,7 +31,6 @@ pub fn get_key() -> String {
     key
 }
 
-
 pub fn get_groups() -> (Config, Tags) {
     let targets = read_to_string("targets.json").unwrap_or_else(|e| {
         eprintln!("Не удалось прочитать файл: {e}");

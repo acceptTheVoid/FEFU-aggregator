@@ -1,6 +1,8 @@
 {% extends "base" %} {% block title %} Feforum {% endblock title %} {% block content %}
 <div class="content">
+    <main>
 
+    </main>
 </div>
 
 <template id="post_template">

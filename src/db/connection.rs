@@ -1,9 +1,8 @@
 use tokio::sync::Mutex;
-use diesel::{prelude::*, dsl::sql};
-use rvk::objects::Integer;
+use diesel::prelude::*;
 use std::env;
 
-// use crate::db::CachedPost;
+use super::{NewUser, User};
 
 pub struct DBConn {
     pub conn: Mutex<MysqlConnection>,
@@ -17,16 +16,38 @@ impl DBConn {
     
         let conn = MysqlConnection::establish(&db_uri)
             .expect(&format!("Error connection to {db_uri}"));
+
         let conn = Mutex::new(conn);
 
         Self { conn }
     }
 
-    pub async fn check(&self, last_id: Integer) -> Option<Integer> {
-        use crate::schema::posts::dsl::*;
+    pub async fn find_user(&self, username: &String) -> Option<i32> {
+        use crate::schema::users::{dsl, self};
         let conn = &*self.conn.lock().await;
-        let max_id = posts.select(sql("MAX(id)")).first(conn);
+        let res: Option<i32> = users::table
+            .filter(dsl::username.eq(username))
+            .select(dsl::id)
+            .first(conn).ok();
+        
+        res
+    }
 
-        max_id.ok().map(|db_id: Integer| (db_id - last_id).abs())
+    pub async fn insert_user(&self, user: &NewUser) {
+        use crate::schema::users;
+        let conn = &*self.conn.lock().await;
+        diesel::insert_into(users::table)
+            .values(user)
+            .execute(conn)
+            .unwrap();
+    }
+
+    pub async fn check_hash(&self, id: i32, password: &str) -> bool {
+        use crate::schema::users::{dsl, self};
+        let conn = &*self.conn.lock().await;
+        let user: User = users::table.find(id).first(conn).unwrap();
+        
+        user.password == password
     }
 }
+

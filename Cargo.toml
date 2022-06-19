@@ -15,4 +15,4 @@ rocket_dyn_templates = { version = "0.1.0-rc.2", features = ["tera"] }
 rvk = { path = "../rust_projects/rvk_fork" }
 serde_json = "1.0.81"
 tokio = { version = "1.19.2", features = ["full"] }
-lazy_static = "1.4.0"
+sha2 = "*"
