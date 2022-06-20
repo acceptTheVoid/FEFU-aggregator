@@ -27,5 +27,5 @@ fn rocket() -> _ {
         .manage(db)
         .attach(Template::fairing())
         .mount("/static", FileServer::from("static/"))
-        .mount("/", routes![index, news, get_posts, group, login, register, register_post, login_post])
+        .mount("/", routes![index, news, get_posts, group, login, register, register_post, login_post, logout])
 }

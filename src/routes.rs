@@ -12,27 +12,21 @@ struct Response {
 #[derive(Debug, Serialize)]
 #[serde(crate = "rocket::serde")]
 pub struct Send {
-    title: String,
     body: String,
-    likes: usize,
-    reposts: usize,
 }
 
 #[get("/")]
 pub async fn index(session: &CookieJar<'_>) -> Template {
-    let cookie = session.get("username").map(|c| c.value().to_string());
-    Template::render("index", context! { account: cookie, })
-}
-
-#[get("/<category>")]
-pub async fn news(category: &str, groups: &State<Config>) -> Option<Template> {
-    Some(Template::render("category", context! { category: &groups.get(category)?, }))
+    let cookie = session.get_private("username").map(|c| c.value().to_string());
+    let session = session.get_private("username").is_some();
+    Template::render("index", context! { account: cookie, session, })
 }
 
 #[get("/group/<tag>")]
-pub async fn group(tag: &str, tags: &State<Tags>) -> Option<Template> {
+pub async fn group(tag: &str, tags: &State<Tags>, session: &CookieJar<'_>) -> Option<Template> {
     tags.get(tag)?;
-    Some(Template::render("feed", context! {}))
+    let session = session.get_private("username").is_some();
+    Some(Template::render("feed", context! { session }))
 }
 
 #[get("/group/<tag>/get?<offset>")]
@@ -48,7 +42,7 @@ pub async fn get_posts(
     params.insert("offset".into(), format!("{offset}"));
 
     let posts = wall::get::<Response>(api, params).await.ok()?;
-    let posts: Vec<Send> = posts.items.into_iter().map(|p| Send { title: "Aboba".into(), body: p.text, likes: 1, reposts: 2, }).collect();  
+    let posts: Vec<Send> = posts.items.into_iter().map(|p| Send { body: p.text, }).collect();  
 
     Some(Json(posts))
 }
@@ -98,4 +92,16 @@ pub async fn login_post(
     }
 
     Redirect::to(uri!("/login"))
+}
+
+#[get("/logout")]
+pub async fn logout(session: &CookieJar<'_>) -> Redirect {
+    session.remove_private(Cookie::named("username"));
+    Redirect::to("/")
+}
+
+#[get("/<category>")]
+pub async fn news(category: &str, groups: &State<Config>, session: &CookieJar<'_>) -> Option<Template> {
+    let session = session.get_private("username").is_some();
+    Some(Template::render("category", context! { category: &groups.get(category)?, session, }))
 }

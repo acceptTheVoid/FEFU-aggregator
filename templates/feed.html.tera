@@ -7,11 +7,10 @@
 
 <template id="post_template">
     <article class="post">
-        <h2></h2>
         <p></p>
         <footer>
-            <button type="button">like</button>
-            <button type="button">repost</button>
+            <button type="button">create thread</button>
+            <p style="font-weight: bold;">---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
         </footer>
     </article>
 </template>

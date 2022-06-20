@@ -14,8 +14,10 @@
     <div class="header">
         <h1>Фефорум</h1>
         <h3>Форум для студентов ДВФУ</h3>
+        {% if session %}
+        <a href="/logout">Выход</a> {% else %}
         <a href="/login">Вход</a>
-        <a href="/register">Регистрация</a>
+        <a href="/register">Регистрация</a> {% endif %}
     </div>
     <div class="container">
         <div class="nav">

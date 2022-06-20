@@ -43,7 +43,7 @@ impl DBConn {
     }
 
     pub async fn check_hash(&self, id: i32, password: &str) -> bool {
-        use crate::schema::users::{dsl, self};
+        use crate::schema::users;
         let conn = &*self.conn.lock().await;
         let user: User = users::table.find(id).first(conn).unwrap();
         

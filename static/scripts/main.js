@@ -63,11 +63,8 @@ function composePost(postData) {
 
     const post = template.content.cloneNode(true);
 
-    const { title, body, likes, reposts } = postData;
-    post.querySelector("h2").innerText = title;
+    const { body } = postData;
     post.querySelector("p").innerText = body;
-    post.querySelector("button:first-child").innerText += likes;
-    post.querySelector("button:last-child").innerText += reposts;
 
     return post;
 }

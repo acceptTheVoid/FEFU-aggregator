@@ -1,6 +1,3 @@
-use db::NewUser;
-use rocket::http::{CookieJar, Cookie};
-
 pub mod init;
 pub mod routes;
 pub mod db;

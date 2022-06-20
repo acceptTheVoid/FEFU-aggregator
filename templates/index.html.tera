@@ -1,7 +1,7 @@
 {% extends "base" %} {% block head %} {% endblock head %} {% block title %} Feforum {% endblock title %} {% block content %}
 <div class="content">
     {% if account %} Привет, {{ account }}! {% else %} Привет, гость! {% endif %}
-    <img src="/" alt="Лого фефу">
+    <img src="/static/images/logo.jpg" alt="Лого фефу">
     <p>Этот сайт был создан для студентов, сотрудников и абитуриентов нашего лучшего вуза</p>
 </div>
 {% endblock content %}
