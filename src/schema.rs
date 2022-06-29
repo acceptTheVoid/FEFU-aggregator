@@ -1,7 +1,6 @@
 table! {
     posts (id) {
         id -> Integer,
-        title -> Text,
         text -> Text,
         date -> Datetime,
         author_id -> Integer,
@@ -15,6 +14,8 @@ table! {
     threads (id) {
         id -> Integer,
         title -> Text,
+        group_id -> Nullable<Bigint>,
+        post_id -> Nullable<Bigint>,
         text -> Text,
         date -> Datetime,
         author_id -> Integer,

@@ -1,10 +1,9 @@
 function page_switch(){
     let content = document.getElementById('content');
     set_opacity(content, 0, 60);
+    
     setTimeout(() => set_opacity(content, 1, 60), 1000);
   }
-
-
 
 function set_opacity(content, end_op, time) {
     let op = Number(content.style.opacity);

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="/static/css/styles.css"> {% endblock head %}
+</head>
+
+<body>
+    <div class="header">
+        <h1>Фефорум</h1>
+        <h3>Форум для студентов ДВФУ</h3>
+        {% if session %}
+        <a href="/logout">Выход</a> {% else %}
+        <a href="/login">Вход</a>
+        <a href="/register">Регистрация</a> {% endif %}
+    </div>
+    <div class="container">
+        <div class="nav">
+            <a href="/news">Новости</a>
+            <a href="/activities">Активности</a>
+            <a href="/services">Сервисы</a>
+            <a href="/memes">Мемы</a>
+            <a href="/contacts">Полезные контакты</a>
+            <a href="/threads">Треды</a>
+        </div>
+        {% block content %} {% endblock content %}
+    </div>
+</body>
+
+</html>

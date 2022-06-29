@@ -1,0 +1,19 @@
+{% extends "base" %} {% block title %} Threads {% endblock title %} {% block content %}
+<div class="content">
+    {% if session %}
+    <p>ОСТАВИТЬ СВОЙ СРАНЫЙ ТРЕД</p>
+    <a href="/new_thread">ебаный нахуй тред</a> {% else %}
+    <p>пожалуйста войдите или зарегестрируйтесь чтобы оставлять свой тред :)</p>
+    <a href="/login">войти</a> {% endif %}
+    <div class="container">
+        {% for thread in threads %}
+        <div class="thread">
+            <p class="title">{{ thread.0.title }}</p>
+            <p class="text">{{ thread.0.text }}</p>
+            <p class="author">Автор хуйни: {{ thread.1 }}</p>
+            <p class="stats">{{ thread.0.date }} Лайки: {{ thread.0.likes }} Дизлайки: {{ thread.0.dislikes }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
