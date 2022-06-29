@@ -1,3 +1,9 @@
 .header {
     text-align: center;
 }
+
+.thread {
+    border: 3px solid;
+    border-color: gray;
+    padding: 0;
+}

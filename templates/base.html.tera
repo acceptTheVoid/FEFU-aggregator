@@ -26,6 +26,7 @@
             <a href="/services">Сервисы</a>
             <a href="/memes">Мемы</a>
             <a href="/contacts">Полезные контакты</a>
+            <a href="/threads">Треды</a>
         </div>
         {% block content %} {% endblock content %}
     </div>
