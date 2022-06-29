@@ -1,7 +1,26 @@
-{% extends "base" %} {% block head %} {% endblock head %} {% block title %} Feforum {% endblock title %} {% block content %}
-<div class="content">
-    {% if account %} Привет, {{ account }}! {% else %} Привет, гость! {% endif %}
-    <img src="/static/images/logo.jpg" alt="Лого фефу">
-    <p>Этот сайт был создан для студентов, сотрудников и абитуриентов нашего лучшего вуза</p>
-</div>
-{% endblock content %}
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+        <meta charset="UTF-8">
+        <link href="/static/css/st_body.css" rel="stylesheet" type="text/css"/>
+        <link href="/static/css/st_header.css" rel="stylesheet" type="text/css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script src="/static/scripts/scr_switch.js"></script>
+        <title> FEFORUM – главная </title>
+    </head>
+
+    <body>
+        <header> {% include "temp_header" %} </header>
+        <div id="content">
+            zdfg,kslf bnsgds <br>
+            zdfg,kslf bnsgds <br>
+            zdfg,kslf bnsgds <br>
+            zdfg,kslf bnsgds <br>
+            zdfg,kslf bnsgds <br>
+            zdfg,kslf bnsgds <br>
+            zdfg,kslf bnsgds <br>
+        </div>
+    </body>
+
+</html>
