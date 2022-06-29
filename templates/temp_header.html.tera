@@ -1,0 +1,23 @@
+<div class="head">
+    <div id="logo">
+        <img src="..\static\images\logo.png" alt="FEFORUM"/>
+    </div>
+    <div id="authorization-panel">
+        {% if session %}
+            <button> Выход </button>
+        {% else %}
+            <button> Вход </button>
+            <button> Регистрация </button>
+        {% endif %}
+    </div>
+</div>
+
+<nav>
+    <div id="nav-panel">
+        <button type="submit" id="news" onclick="page_switch();"> Новости </button>
+        <button type="submit" id="activities" onclick="page_switch();"> Активности </button>
+        <button type="submit" id="services" onclick="page_switch();"> Сервисы </button>
+        <button type="submit" id="mems" onclick="page_switch();"> Мемы </button>
+        <button type="submit" id="contacts" onclick="page_switch();"> Полезные контакты </button>
+    </div>
+</nav>

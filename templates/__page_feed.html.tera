@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+        {% include "_meta" %}
+    </head>
+
+    <body>
+        <header>
+            {% include "_header" %}
+        </header>
+        <div class="content">
+            <main>
+        
+            </main>
+        </div>
+        
+        <template id="post_template">
+            <article class="post">
+                <p></p>
+                <footer>
+                    <button type="button">create thread</button>
+                    <p style="font-weight: bold;">---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+                </footer>
+            </article>
+        </template>
+        <script src="/static/scripts/main.js"></script>
+    </body>
+
+</html>

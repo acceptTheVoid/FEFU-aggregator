@@ -1,6 +1,6 @@
 use chrono::Local;
 use rocket::{State, http::{CookieJar, Cookie, Status}, response::Redirect, form::Form, serde::json::Json};
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use rocket_dyn_templates::Template;
 use rvk::{APIClient, objects::post::Post, methods::wall, Params};
 use crate::{db::{connection::DBConn, Config, Tags, models::{ff_models::{NewUser, self}, db_models}}, hash};
