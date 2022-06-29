@@ -1,4 +1,4 @@
-{% extends "base" %} {% block title %} New Thread {% endblock title %} {% block content %}
+{# {% extends "base" %} {% block title %} New Thread {% endblock title %} {% block content %}
 <div class="content">
     <form action="/new_thread" method="post">
         <label>Title: <input type="text" name="title"></label>
@@ -6,4 +6,4 @@
         <input type="submit" value="Create">
     </form>
 </div>
-{% endblock content %}
+{% endblock content %} #}

@@ -1,4 +1,4 @@
-{% extends "base" %} {% block title %} Threads {% endblock title %} {% block content %}
+{# {% extends "base" %} {% block title %} Threads {% endblock title %} {% block content %}
 <div class="content">
     {% if session %}
     <p>ОСТАВИТЬ СВОЙ СРАНЫЙ ТРЕД</p>
@@ -16,4 +16,4 @@
         {% endfor %}
     </div>
 </div>
-{% endblock content %}
+{% endblock content %} #}

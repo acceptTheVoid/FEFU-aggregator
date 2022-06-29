@@ -185,3 +185,8 @@ pub async fn new_thread_post(
         None => Err(Status::Unauthorized),
     }
 }
+
+#[get("/get_targets")]
+pub async fn get_targets(targets: &State<Config>) -> Json<Config> {
+    Json((*targets.inner()).clone())
+}
