@@ -1,21 +1,43 @@
-<div class="head">
+<header>
     <div id="logo">
         <img src="..\static\images\logo.png" alt="FEFORUM" />
     </div>
     <div id="authorization-panel">
         {% if session %}
-        <button> Выход </button> {% else %}
-        <button> Вход </button>
-        <button> Регистрация </button> {% endif %}
+            <button type="submit"> Выход </button>
+        {% else %}
+            <button type="submit" id="in" onclick="popup(this.id);"> Вход </button>
+            <button type="submit" id="up" onclick="popup(this.id);"> Регистрация </button>
+        {% endif %}
     </div>
+</header>
+
+<nav id="nav-panel">
+    <button type="submit" id="news" onclick="page_switch(this.id);"> Новости </button>
+    <button type="submit" id="activities" onclick="page_switch(this.id);"> Активности </button>
+    <button type="submit" id="services" onclick="page_switch(this.id);"> Сервисы </button>
+    <button type="submit" id="memes" onclick="page_switch(this.id);"> Мемы </button>
+    <button type="submit" id="contacts" onclick="page_switch(this.id);"> Полезные контакты </button>
+</nav>
+
+<div id="screen-lock"></div>
+<div class="popup" id="popup-in">
+    <form class="form" id="form-in" action="" method="post">
+        <button type="button" class="close" name="in" onclick="popout(this.name)"><img src="..\static\images\close.png" alt="ЗАКРЫТЬ" /></button>
+        <h1> Вход </h1>
+        <input class="form-input" name="username" type="text" placeholder="Логин">
+        <input class="form-input" name="password" type="password" placeholder="Пароль">
+    </form>
+</div>
+<div class="popup" id="popup-up">
+    <form class="form" id="form-up" action="" method="post">
+        <button type="button" class="close" name="up" onclick="popout(this.name)"><img src="..\static\images\close.png" alt="ЗАКРЫТЬ" /></button>
+        <h1> Регистрация </h1>
+        <input class="form-input" name="username" type="text" placeholder="Логин">
+        <input class="form-input" name="password" type="password" placeholder="Пароль">
+        <input class="form-input" name="c_password" type="password" placeholder="Подтвердите пароль">
+    </form>
 </div>
 
-<nav>
-    <div id="nav-panel">
-        <button type="submit" id="news" onclick="page_switch(this.id);"> Новости </button>
-        <button type="submit" id="activities" onclick="page_switch(this.id);"> Активности </button>
-        <button type="submit" id="services" onclick="page_switch(this.id);"> Сервисы </button>
-        <button type="submit" id="memes" onclick="page_switch(this.id);"> Мемы </button>
-        <button type="submit" id="contacts" onclick="page_switch(this.id);"> Полезные контакты </button>
-    </div>
-</nav>
+<script src="/static/scripts/scr_switch.js"> </script>
+<script src="/static/scripts/scr_popup.js">  </script>

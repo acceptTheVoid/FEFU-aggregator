@@ -5,14 +5,11 @@
     <meta charset="UTF-8">
     <link href="/static/css/st_body.css" rel="stylesheet" type="text/css" />
     <link href="/static/css/st_header.css" rel="stylesheet" type="text/css" />
-    <script src="/static/scripts/scr_switch.js"></script>
     <title> FEFORUM – главная </title>
 </head>
-
 <body>
-    <header> {% include "temp_header" %} </header>
+    {% include "temp_header" %}
     <div id="content">
-        zdfg,kslf bnsgds <br> zdfg,kslf bnsgds <br> zdfg,kslf bnsgds <br> zdfg,kslf bnsgds <br> zdfg,kslf bnsgds <br> zdfg,kslf bnsgds <br> zdfg,kslf bnsgds <br>
     </div>
 </body>
 
