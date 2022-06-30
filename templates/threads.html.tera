@@ -1,8 +1,8 @@
 {# {% extends "base" %} {% block title %} Threads {% endblock title %} {% block content %} #}
 <div class="content">
     {% if session %}
-    <p>ОСТАВИТЬ СВОЙ СРАНЫЙ ТРЕД</p>
-    <a href="/new_thread">ебаный нахуй тред</a> {% else %}
+    <p>леее куда преш не видишь фефорум идет</p>
+    <a href="/new_thread">новый тред</a> {% else %}
     <p>пожалуйста войдите или зарегестрируйтесь чтобы оставлять свой тред :)</p>
     <a href="/login">войти</a> {% endif %}
     <div class="container">
@@ -10,10 +10,10 @@
         <div class="thread">
             <p class="title">{{ thread.0.title }}</p>
             <p class="text">{{ thread.0.text }}</p>
-            <p class="author">Автор хуйни: {{ thread.1 }}</p>
+            <p class="author">Автор треда: {{ thread.1 }}</p>
             <p class="stats">{{ thread.0.date }} Лайки: <button class="likes" id="{{ thread.0.id }}" tag="{{ thread.0.id }}" type="button" onclick="like(this.id);">{{ thread.0.likes }}</button> Дизлайки: <button class="dislikes" id="{{ thread.0.id }}" tag="{{ thread.0.id }}"
                     type="button" onclick="dislike(this.id);">{{ thread.0.dislikes }}</button></p>
-            <a href="/thread/{{ thread.0.id }}" class="discuss">Обсуждение говна</a>
+            <a href="/thread/{{ thread.0.id }}" class="discuss">Обсуждение</a>
         </div>
         {% endfor %}
     </div>

@@ -4,11 +4,9 @@
     </div>
     <div id="authorization-panel">
         {% if session %}
-            <button type="submit"> Выход </button>
-        {% else %}
-            <button type="submit" id="in" onclick="popup(this.id);"> Вход </button>
-            <button type="submit" id="up" onclick="popup(this.id);"> Регистрация </button>
-        {% endif %}
+        <button type="submit" onclick="logout();"> Выход </button> {% else %}
+        <button type="submit" id="in" onclick="popup(this.id);"> Вход </button>
+        <button type="submit" id="up" onclick="popup(this.id);"> Регистрация </button> {% endif %}
     </div>
 </header>
 
@@ -39,5 +37,7 @@
     </form>
 </div>
 
-<script src="/static/scripts/scr_switch.js"> </script>
-<script src="/static/scripts/scr_popup.js">  </script>
+<script src="/static/scripts/scr_switch.js">
+</script>
+<script src="/static/scripts/scr_popup.js">
+</script>

@@ -29,12 +29,17 @@ function create_element(publics_info) {
     publics_info.forEach(public_info => {
         let public_panel = document.getElementById('public-panel');
         console.log(public_panel);
-        public_panel.insertAdjacentHTML('beforeend', 
-        '<button class="public-cell">'+
-        `${public_info.name}`+
-        '</button>')
+        public_panel.insertAdjacentHTML('beforeend',
+            `<button class="public-cell" type="submit" onclick="pub_ref('${public_info.tag}')">` +
+            `${public_info.name}` +
+            '</button>');
     })
 }
+
+function pub_ref(href) {
+    setTimeout(() => window.location.href = `/group/${href}`, 50);
+}
+
 /*********************************************************/
 /*  Изменение прозрачности элемента.  */
 function set_opacity(content, end_op, time) {
