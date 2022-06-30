@@ -63,10 +63,37 @@ function composePost(postData) {
 
     const post = template.content.cloneNode(true);
 
-    const { body } = postData;
+    const { body, id, threads } = postData;
     post.querySelector("p").innerText = body;
+    post.querySelector('button').id = id;
+
+    threads.forEach((n) => {
+        let title = document.createElement('h1');
+        title.innerHTML = n.title;
+
+        let href = document.createElement('a');
+        href.innerHTML = 'Перейти к обсуждению';
+        href.href = `/thread/${n.id}`;
+
+        let article = post.querySelector('article');
+
+        article.appendChild(title);
+        article.appendChild(href);
+    });
 
     return post;
 }
 
 fetchPosts()
+
+function createThread(post_id) {
+    let href = window.location.href.split('/');
+    let group_id = href[href.length - 1] === "" ? href[href.length - 2] : href[href.length - 1];
+
+    console.log(group_id);
+
+    sessionStorage.setItem('group_id', group_id);
+    sessionStorage.setItem('post_id', post_id);
+
+    window.location.href = 'http://127.0.0.1:8000/new_thread';
+}
