@@ -1,9 +1,8 @@
-{# {% extends "base" %} {% block title %} New Thread {% endblock title %} {% block content %}
 <div class="content">
-    <form action="/new_thread" method="post">
+    <form action="/new_thread" method="post" id="create_thread">
         <label>Title: <input type="text" name="title"></label>
         <label>Text: <input type="text" name="text"></label>
-        <input type="submit" value="Create">
+        <input type="submit" value="Create" id="submit">
     </form>
+    <script src="/static/scripts/create_thread.js"></script>
 </div>
-{% endblock content %} #}

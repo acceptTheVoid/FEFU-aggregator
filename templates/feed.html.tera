@@ -1,0 +1,16 @@
+<div class="content">
+    <main>
+
+    </main>
+</div>
+
+<template id="post_template">
+    <article class="post">
+        <p></p>
+        <footer>
+            <button type="button" id="" onclick="createThread(this.id);">create thread</button>
+        </footer>
+    </article>
+    <p style="font-weight: bold;">---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+</template>
+<script src="/static/scripts/scr_main.js"></script>

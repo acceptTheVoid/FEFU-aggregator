@@ -4,10 +4,7 @@ async function init() {
     return targets;
 }
 
-const targets = init();
-
 async function page_switch(id) {
-    let targets = await init();
     let target = targets[id];
     let content = document.getElementById('content');
     set_opacity(content, 0, 60);

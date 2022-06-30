@@ -1,4 +1,4 @@
-{# {% extends "base" %} {% block title %} Threads {% endblock title %} {% block content %}
+{# {% extends "base" %} {% block title %} Threads {% endblock title %} {% block content %} #}
 <div class="content">
     {% if session %}
     <p>ОСТАВИТЬ СВОЙ СРАНЫЙ ТРЕД</p>
@@ -12,8 +12,9 @@
             <p class="text">{{ thread.0.text }}</p>
             <p class="author">Автор хуйни: {{ thread.1 }}</p>
             <p class="stats">{{ thread.0.date }} Лайки: {{ thread.0.likes }} Дизлайки: {{ thread.0.dislikes }}</p>
+            <a href="/thread/{{ thread.0.id }}" class="discuss">Обсуждение говна</a>
         </div>
         {% endfor %}
     </div>
 </div>
-{% endblock content %} #}
+{# {% endblock content %} #}

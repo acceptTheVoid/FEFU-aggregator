@@ -1,8 +1,9 @@
+use rvk::objects::Integer;
 use tokio::sync::Mutex;
 use diesel::prelude::*;
 use std::env;
 
-use super::{models::{db_models::User, ff_models::NewUser}, db_models::{Thread, NewThread}};
+use super::{models::{db_models::User, ff_models::NewUser}, db_models::{Thread, NewThread, Post, NewPost}};
 
 pub struct DBConn {
     pub conn: Mutex<MysqlConnection>,
@@ -36,6 +37,7 @@ impl DBConn {
     pub async fn insert_user(&self, user: &NewUser) -> QueryResult<()> {
         use crate::schema::users;
         let conn = &*self.conn.lock().await;
+
         diesel::insert_into(users::table)
             .values(user)
             .execute(conn)?;
@@ -45,7 +47,6 @@ impl DBConn {
 
     pub async fn check_hash(&self, id: i32, password: &str) -> QueryResult<bool> {
         use crate::schema::users;
-
         let conn = &*self.conn.lock().await;
         let user: User = users::table.find(id).first(conn)?;
 
@@ -70,5 +71,36 @@ impl DBConn {
             .values(thread).execute(conn)?;
 
         Ok(())
+    }
+
+    pub async fn get_thread(&self, id: i32) -> QueryResult<(Thread, Vec<Post>)> {
+        use crate::schema::{threads, posts};
+        let conn = &*self.conn.lock().await;
+
+        let thread: Thread = threads::table.find(id)
+            .select(threads::all_columns).first(conn)?;
+
+        let posts: Vec<Post> = posts::table.filter(posts::thread_id.eq(id)).load(conn)?;
+
+        Ok((thread, posts))
+    }
+
+    pub async fn new_post(&self, post: NewPost) -> QueryResult<()> {
+        use crate::schema::posts;
+        let conn = &*self.conn.lock().await;
+        
+        diesel::insert_into(posts::table).values(post).execute(conn)?;
+
+        Ok(())
+    }
+
+    pub async fn get_threads_from(&self, group_id: Integer, post_id: Integer) -> QueryResult<Vec<Thread>> {
+        use crate::schema::threads;
+        let conn = &*self.conn.lock().await;
+        
+        threads::table.filter(threads::group_id.eq(group_id))
+            .filter(threads::post_id.eq(post_id))
+            .select(threads::all_columns)
+            .load(conn)
     }
 }

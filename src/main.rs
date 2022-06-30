@@ -30,7 +30,7 @@ fn rocket() -> _ {
         .mount("/", routes![
             index, news, get_posts, group, login, 
             register, register_post, login_post, logout,
-            // threads, new_thread, new_thread_post
-            get_targets
+            threads, new_thread, new_thread_post,
+            get_targets, thread, new_post,
         ])
 }
