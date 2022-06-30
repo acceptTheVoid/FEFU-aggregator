@@ -254,3 +254,24 @@ pub async fn new_post(
 pub async fn get_targets(targets: &State<Config>) -> Json<Config> {
     Json((*targets.inner()).clone())
 }
+
+#[derive(Debug, Serialize)]
+pub struct LikeInfo {
+    pub likes: i32,
+    pub dislikes: i32,
+}
+
+#[get("/like?<id>")]
+pub async fn like(id: i32, session: &CookieJar<'_>, db: &State<DBConn>) -> Result<Json<LikeInfo>, Status> {
+    let user_id: i32 = match session.get_private("user_id") {
+        Some(c) => c.value().parse().unwrap(),
+        None => return Err(Status::Unauthorized),
+    };
+
+    todo!()
+}
+
+#[get("/dislike?<id>")]
+pub async fn dislike(id: i32) -> Result<Json<LikeInfo>, Status> {
+    todo!()
+}

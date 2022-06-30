@@ -88,7 +88,7 @@ fetchPosts()
 
 function createThread(post_id) {
     let href = window.location.href.split('/');
-    let group_id = href[href.length - 1];
+    let group_id = href[href.length - 1] === "" ? href[href.length - 2] : href[href.length - 1];
 
     console.log(group_id);
 

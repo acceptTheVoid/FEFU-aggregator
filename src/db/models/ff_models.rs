@@ -12,7 +12,6 @@ pub struct NewUser {
 #[derive(Debug, Deserialize, FromForm)]
 pub struct NewThread {
     pub title: String,
-    #[field(validate = neq(Some("null".to_string())))]
     pub group_id: Option<String>,
     pub post_id: Option<Integer>,
     pub text: String,

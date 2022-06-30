@@ -11,10 +11,12 @@
             <p class="title">{{ thread.0.title }}</p>
             <p class="text">{{ thread.0.text }}</p>
             <p class="author">Автор хуйни: {{ thread.1 }}</p>
-            <p class="stats">{{ thread.0.date }} Лайки: {{ thread.0.likes }} Дизлайки: {{ thread.0.dislikes }}</p>
+            <p class="stats">{{ thread.0.date }} Лайки: <button class="likes" id="{{ thread.0.id }}" tag="{{ thread.0.id }}" type="button" onclick="like(this.id);">{{ thread.0.likes }}</button> Дизлайки: <button class="dislikes" id="{{ thread.0.id }}" tag="{{ thread.0.id }}"
+                    type="button" onclick="dislike(this.id);">{{ thread.0.dislikes }}</button></p>
             <a href="/thread/{{ thread.0.id }}" class="discuss">Обсуждение говна</a>
         </div>
         {% endfor %}
     </div>
 </div>
+<script src="/static/scripts/likes.js"></script>
 {# {% endblock content %} #}
