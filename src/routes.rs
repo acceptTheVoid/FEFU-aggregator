@@ -261,9 +261,9 @@ pub struct LikeInfo {
     pub dislikes: i32,
 }
 
-#[get("/like?<id>")]
-pub async fn like(id: i32, session: &CookieJar<'_>, db: &State<DBConn>) -> Result<Json<LikeInfo>, Status> {
-    let user_id: i32 = match session.get_private("user_id") {
+#[get("/like?<_id>")]
+pub async fn like(_id: i32, session: &CookieJar<'_>, _db: &State<DBConn>) -> Result<Json<LikeInfo>, Status> {
+    let _user_id: i32 = match session.get_private("user_id") {
         Some(c) => c.value().parse().unwrap(),
         None => return Err(Status::Unauthorized),
     };
@@ -271,7 +271,7 @@ pub async fn like(id: i32, session: &CookieJar<'_>, db: &State<DBConn>) -> Resul
     todo!()
 }
 
-#[get("/dislike?<id>")]
-pub async fn dislike(id: i32) -> Result<Json<LikeInfo>, Status> {
+#[get("/dislike?<_id>")]
+pub async fn dislike(_id: i32) -> Result<Json<LikeInfo>, Status> {
     todo!()
 }
